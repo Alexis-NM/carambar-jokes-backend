@@ -47,8 +47,6 @@ Une fois démarré, l’API est accessible à :
 http://localhost:3000/api/v1/jokes
 ```
 
-- **Swagger UI** : [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
-
 ### Déploiement sur Render
 
 Le service est déployé automatiquement sur Render.

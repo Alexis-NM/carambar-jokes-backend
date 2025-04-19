@@ -26,7 +26,7 @@ const router = express.Router();
  *             properties:
  *               content:
  *                 type: string
- *                 example: "Quel est le comble pour un joueur de bowling ? C’est de perdre la boule."
+ *                 example: "Quel métier les chiens peuvent-ils exercer ? Electrichien !"
  *     responses:
  *       201:
  *         description: Blague créée
