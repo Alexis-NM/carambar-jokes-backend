@@ -1,11 +1,11 @@
 /**
  * @file app.js
- * @description Fichier principal de l'application qui configure le serveur Express, 
+ * @description Fichier principal de l'application qui configure le serveur Express,
  * se connecte à la base de données via Sequelize, et établit les routes de l'API.
  *
  * Ce fichier effectue les tâches suivantes :
  * - Charge les variables d'environnement via dotenv.
- * - Configure CORS pour autoriser les requêtes depuis l'URL configurée dans FRONT_URL.
+ * - Configure CORS pour autoriser les requêtes depuis les URLs configurées.
  * - Analyse les requêtes JSON entrantes.
  * - Intègre Swagger UI pour la documentation de l'API via la fonction setupSwagger.
  * - Monte les routes jokeRoutes à l'endpoint "/api/v1/jokes".
@@ -28,19 +28,23 @@ import { setupSwagger } from "./docs/swagger.js";
 
 dotenv.config();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const FRONT_URL = process.env.FRONT_URL;
+const DEV_URL = process.env.DEV_URL;
 
 const app = express();
 
-app.use(
-  cors({
-    origin: FRONT_URL,
-  })
-);
+// Configuration CORS : autorise front de prod et dev local
+const allowedOrigins = [FRONT_URL, DEV_URL];
+app.use(cors({ origin: allowedOrigins }));
 
+// Parse le JSON des requêtes entrantes
 app.use(express.json());
+
+// Documentation Swagger UI
 setupSwagger(app);
+
+// Routes de l'application
 app.use("/api/v1/jokes", jokeRoutes);
 
 (async () => {
