@@ -1,7 +1,7 @@
 import db from "../models/index.js";
 const { Joke } = db;
 
-// Create a new joke
+// Créer une nouvelle blague
 export const createJoke = async (req, res) => {
   try {
     const { content } = req.body;
@@ -18,7 +18,7 @@ export const createJoke = async (req, res) => {
   }
 };
 
-// Get all jokes
+// Obtenir toutes les blagues
 export const getAllJokes = async (req, res) => {
   try {
     const jokes = await Joke.findAll();
@@ -29,7 +29,7 @@ export const getAllJokes = async (req, res) => {
   }
 };
 
-// Get a joke by ID
+// Obtenir une blague par ID
 export const getJokeById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -44,7 +44,7 @@ export const getJokeById = async (req, res) => {
   }
 };
 
-// Get a random joke
+// Obtenir une blague aléatoire
 export const getRandomJoke = async (req, res) => {
   try {
     const count = await Joke.count();
