@@ -6,6 +6,12 @@ dotenv.config();
 
 const { Joke } = db;
 
+/**
+ * Un tableau de blagues initiales utilisé dans l'application.
+ * Chaque élément du tableau est une chaîne qui représente un jeu de mots humoristique ou un calembour.
+ *
+ * @constant {string[]}
+ */
 const initialJokes = [
   "Quelle est la femelle du hamster ? L’Amsterdam",
   "Que dit un oignon quand il se cogne ? Aïe",
@@ -25,9 +31,9 @@ async function seed() {
     await Joke.destroy({ where: {} });
     const jokes = initialJokes.map((content) => ({ content }));
     await Joke.bulkCreate(jokes);
-    console.log(`✅ Inséré ${jokes.length} blagues.`);
+    console.log(`✅ Inserted ${jokes.length} jokes.`);
   } catch (err) {
-    console.error("❌ Erreur de seed :", err);
+    console.error("❌ Seed error:", err);
   } finally {
     await sequelize.close();
     process.exit(0);

@@ -14,7 +14,7 @@ const options = {
       title: "Carambar Jokes API",
       version: "1.0.0",
       description:
-        "API pour gérer les blagues Carambar (CRUD + joke aléatoire)",
+        "API pour gérer les blagues Carambar (CRUD + blague aléatoire)",
     },
     servers: [
       {
