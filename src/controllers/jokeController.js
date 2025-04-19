@@ -14,7 +14,7 @@ export const createJoke = async (req, res) => {
       });
     }
     console.error(error);
-    return res.status(500).json({ message: "Erreur interne du serveur." });
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
 
@@ -25,7 +25,7 @@ export const getAllJokes = async (req, res) => {
     return res.json(jokes);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Erreur interne du serveur." });
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
 
@@ -35,12 +35,12 @@ export const getJokeById = async (req, res) => {
     const { id } = req.params;
     const joke = await Joke.findByPk(id);
     if (!joke) {
-      return res.status(404).json({ message: "Blague non trouvée." });
+      return res.status(404).json({ message: "Joke not found." });
     }
     return res.json(joke);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Erreur interne du serveur." });
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
 
@@ -53,6 +53,6 @@ export const getRandomJoke = async (req, res) => {
     return res.json(randomJoke);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Erreur interne du serveur." });
+    return res.status(500).json({ message: "Internal server error." });
   }
 };
