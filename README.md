@@ -23,14 +23,8 @@ API REST pour gérer une collection de blagues Carambar. Fournit des endpoints p
    ```bash
    npm install
    ```
-3. Créer un fichier `.env` à la racine :
-   ```env
-   DB_DIALECT=sqlite
-   DB_STORAGE=./db.sqlite
-   DB_LOGGING=false
-   PORT=3000
-   FRONT_URL=https://alexis-nm.github.io
-   ```
+3. Créer un fichier `.env` à la racine à partir du fichier `.env.sample`
+
 4. Lancer en mode développement :
    ```bash
    npm run dev
@@ -43,25 +37,27 @@ API REST pour gérer une collection de blagues Carambar. Fournit des endpoints p
 ## Usage
 
 Une fois démarré, l’API est accessible à :
+
 ```
 http://localhost:3000/api/v1/jokes
 ```
 
 ### Déploiement sur Render
 
-Le service est déployé automatiquement sur Render.
+Le service est déployé sur Render.
+
 - URL de base : `https://carambar-jokes-backend.onrender.com/api/v1`
 - Swagger UI : `https://carambar-jokes-backend.onrender.com/api-docs`
 
 ## Endpoints
 
-| Route                        | Méthode | Paramètres                | Description                                 |
-| ---------------------------- | ------- | ------------------------- | ------------------------------------------- |
-| `/api/v1/jokes`              | GET     | —                         | Récupère toutes les blagues                 |
-| `/api/v1/jokes/:id`          | GET     | `id` (integer, path)      | Récupère une blague par son identifiant     |
-| `/api/v1/jokes/random`       | GET     | —                         | Récupère une blague aléatoire               |
-| `/api/v1/jokes`              | POST    | `{ content: string }`     | Crée une nouvelle blague                    |
+| Route                  | Méthode | Paramètres            | Description                             |
+| ---------------------- | ------- | --------------------- | --------------------------------------- |
+| `/api/v1/jokes`        | GET     | —                     | Récupère toutes les blagues             |
+| `/api/v1/jokes/:id`    | GET     | `id` (integer, path)  | Récupère une blague par son identifiant |
+| `/api/v1/jokes/random` | GET     | —                     | Récupère une blague aléatoire           |
+| `/api/v1/jokes`        | POST    | `{ content: string }` | Crée une nouvelle blague                |
 
 ---
 
-*Bonne dégustation de blagues !*
+_Bonne dégustation de blagues !_
