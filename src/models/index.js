@@ -1,7 +1,12 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import { Sequelize } from "sequelize";
 import sequelize from "../config/database.js";
+
+// __filename et __dirname en ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const basename = path.basename(__filename);
 const db = {};
@@ -21,6 +26,11 @@ for (const file of modelFiles) {
   db[model.name] = model;
 }
 
+// Expose les instances Sequelize
+/**
+ * @property {Sequelize} sequelize - L'instance principale de Sequelize pour les requêtes.
+ * @property {import('sequelize').Sequelize} Sequelize - La classe Sequelize pour accéder aux classes et types.
+ */
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
