@@ -1,4 +1,3 @@
-// src/docs/swagger.js
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import path from "path";
@@ -23,9 +22,33 @@ const options = {
         description: "Server local",
       },
     ],
+    components: {
+      schemas: {
+        Joke: {
+          type: "object",
+          properties: {
+            id: {
+              type: "integer",
+              example: 1,
+            },
+            content: {
+              type: "string",
+              example: "Quelle est la femelle du hamster ? L’Amsterdam",
+            },
+            createdAt: {
+              type: "string",
+              format: "date-time",
+            },
+            updatedAt: {
+              type: "string",
+              format: "date-time",
+            },
+          },
+        },
+      },
+    },
   },
   apis: [
-    // On peut maintenant utiliser __dirname sans erreur
     path.join(__dirname, "../routes/*.js"),
     path.join(__dirname, "../controllers/*.js"),
   ],
