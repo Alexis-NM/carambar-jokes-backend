@@ -26,7 +26,7 @@ const router = express.Router();
  *             properties:
  *               content:
  *                 type: string
- *                 example: "Pourquoi le ciel est bleu ?"
+ *                 example: "Quel est le comble pour un joueur de bowling ? C’est de perdre la boule."
  *     responses:
  *       201:
  *         description: Blague créée
