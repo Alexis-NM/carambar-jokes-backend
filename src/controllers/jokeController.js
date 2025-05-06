@@ -44,12 +44,26 @@ export const getJokeById = async (req, res) => {
   }
 };
 
-// Obtenir une blague aléatoire
+// Obtenir une blague aléatoire différente de la dernière blague
 export const getRandomJoke = async (req, res) => {
   try {
-    const count = await Joke.count();
-    const randomIndex = Math.floor(Math.random() * count);
-    const randomJoke = await Joke.findOne({ offset: randomIndex });
+    const lastJokeId = req.query.lastJokeId
+      ? Number(req.query.lastJokeId)
+      : null;
+    const where = lastJokeId ? { id: { [Op.ne]: lastJokeId } } : {};
+    const count = await Joke.count({ where });
+
+    if (count === 0) {
+      const fallback = await Joke.findByPk(lastJokeId);
+      return res.json(fallback);
+    }
+    const randomOffset = Math.floor(Math.random() * count);
+
+    const randomJoke = await Joke.findOne({
+      where,
+      offset: randomOffset,
+    });
+
     return res.json(randomJoke);
   } catch (error) {
     console.error(error);
